@@ -31,7 +31,7 @@
         android:layout_gravity="bottom|end"
         android:layout_marginEnd="@dimen/fab_margin"
         android:layout_marginBottom="@dimen/fab_margin"
-        android:contentDescription="@string/fab"
+        android:contentDescription="@string/make_photo"
         android:visibility="gone"
         app:backgroundTint="#8BC34A"
         app:srcCompat="@android:drawable/ic_input_add"

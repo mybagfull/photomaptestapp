@@ -3,21 +3,23 @@ package com.denishrynkevich.photomaptestapp
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
-import com.google.android.material.navigation.NavigationView
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupWithNavController
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import com.denishrynkevich.photomaptestapp.databinding.ActivityMainBinding
 import com.denishrynkevich.photomaptestapp.di.viewModel.ViewModelFactory
 import com.denishrynkevich.photomaptestapp.ui.auth.AuthActivity
 import com.denishrynkevich.photomaptestapp.ui.token.TokenViewModel
+import com.denishrynkevich.photomaptestapp.ui.camera.CameraActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.navigation.NavigationView
 import javax.inject.Inject
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -40,20 +42,20 @@ class MainActivity : AppCompatActivity() {
 
 
             binding.appBarMain.fab.setOnClickListener {
-                //navigateToCamera()
+                navigateToCamera()
             }
             val drawerLayout: DrawerLayout = binding.drawerLayout
             val navView: NavigationView = binding.navView
             val navController = findNavController(R.id.nav_host_fragment_content_main)
 
-//            navController.addOnDestinationChangedListener { _, dest, _ ->
-//                when (dest.id) {
-//                    R.id.commentsFragment -> findViewById<FloatingActionButton>(R.id.fab).isVisible =
-//                        false
-//
-//                    else -> findViewById<FloatingActionButton>(R.id.fab).isVisible = true
-//                }
-//            }
+            navController.addOnDestinationChangedListener { _, dest, _ ->
+                when (dest.id) {
+                    R.id.commentsFragment -> findViewById<FloatingActionButton>(R.id.fab).isVisible =
+                        false
+
+                    else -> findViewById<FloatingActionButton>(R.id.fab).isVisible = true
+                }
+            }
 
             appBarConfiguration = AppBarConfiguration(
                 setOf(
@@ -66,6 +68,12 @@ class MainActivity : AppCompatActivity() {
 
 
     }
+
+    private fun navigateToCamera() {
+        val intent = Intent(this, CameraActivity::class.java)
+        startActivity(intent)
+    }
+
 
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_main)

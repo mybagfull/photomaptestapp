@@ -5,11 +5,12 @@ import androidx.core.content.edit
 import javax.inject.Inject
 
 class UserDataSource @Inject constructor(
-    private val preferences: SharedPreferences
+    private val prefs: SharedPreferences
 ) {
-    fun getToken(): String = preferences.getString(TOKEN_KEY, EMPTY_STRING).orEmpty()
 
-    fun setToken(token: String) = preferences.edit {
+    fun getToken(): String = prefs.getString(TOKEN_KEY, EMPTY_STRING).orEmpty()
+
+    fun setToken(token: String) = prefs.edit {
         putString(TOKEN_KEY, token)
     }
 

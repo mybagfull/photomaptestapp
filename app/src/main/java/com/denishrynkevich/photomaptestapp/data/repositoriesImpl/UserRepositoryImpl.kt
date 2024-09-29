@@ -1,11 +1,11 @@
 package com.denishrynkevich.photomaptestapp.data.repositoriesImpl
 
-import com.denishrynkevich.photomaptestapp.data.mappers.userMappers.AuthDataResponseMapper
-import com.denishrynkevich.photomaptestapp.data.mappers.userMappers.UserDtoMapper
-import com.denishrynkevich.photomaptestapp.data.network.AuthService
+import com.denishrynkevich.photomaptestapp.data.mappers.user.AuthDataResponseMapper
+import com.denishrynkevich.photomaptestapp.data.mappers.user.UserDtoMapper
+import com.denishrynkevich.photomaptestapp.data.network.service.AuthService
 import com.denishrynkevich.photomaptestapp.domain.model.UserData
 import com.denishrynkevich.photomaptestapp.domain.repositories.UserRepository
-import com.denishrynkevich.photomaptestapp.util.ApiRequestFlow
+import com.denishrynkevich.photomaptestapp.utils.ApiRequestFlow
 import javax.inject.Inject
 
 class UserRepositoryImpl @Inject constructor(

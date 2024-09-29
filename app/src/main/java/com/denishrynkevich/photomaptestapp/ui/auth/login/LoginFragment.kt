@@ -2,37 +2,44 @@ package com.denishrynkevich.photomaptestapp.ui.auth.login
 
 import android.content.Context
 import android.content.Intent
+import androidx.fragment.app.Fragment
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isVisible
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.denishrynkevich.photomaptestapp.DaggerApp
 import com.denishrynkevich.photomaptestapp.MainActivity
+/*
+import com.denishrynkevich.photomaptestapp.DaggerApp
+*/
 import com.denishrynkevich.photomaptestapp.databinding.FragmentLoginBinding
 import com.denishrynkevich.photomaptestapp.di.viewModel.ViewModelFactory
 import com.denishrynkevich.photomaptestapp.domain.model.UserTokenData
 import com.denishrynkevich.photomaptestapp.ui.auth.AuthViewModel
 import com.denishrynkevich.photomaptestapp.ui.token.TokenViewModel
-import com.denishrynkevich.photomaptestapp.util.ApiResponse
+/*
+import com.denishrynkevich.photomaptestappk.di.viewModel.ViewModelFactory
+*/
+import com.denishrynkevich.photomaptestapp.utils.ApiResponse
 import javax.inject.Inject
+
 
 class LoginFragment : Fragment() {
 
     @Inject
     lateinit var factory: ViewModelFactory
-    private val authViewModel: AuthViewModel by viewModels()
-    private val tokenViewModel: TokenViewModel by viewModels()
+    private val authViewModel: AuthViewModel by viewModels { factory }
+    private val tokenViewModel: TokenViewModel by viewModels { factory }
     private var _binding: FragmentLoginBinding? = null
 
     private val binding get() = _binding!!
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
+        (requireActivity().applicationContext as DaggerApp).appComponent.inject(this)
     }
 
     override fun onCreateView(

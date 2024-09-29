@@ -6,16 +6,14 @@ import com.denishrynkevich.photomaptestapp.DaggerApp
 import com.denishrynkevich.photomaptestapp.R
 import com.denishrynkevich.photomaptestapp.databinding.ActivityAuthBinding
 import com.denishrynkevich.photomaptestapp.ui.auth.login.LoginFragment
-import com.denishrynkevich.photomaptestapp.ui.auth.register.RegisterFragment
-import com.google.android.material.tabs.TabLayout
+import com.denishrynkevich.photomaptestapp.ui.auth.registration.RegistrationFragment
 import com.google.android.material.tabs.TabLayoutMediator
-import javax.inject.Inject
 
 class AuthActivity : AppCompatActivity() {
 
     private val fragmentList = listOf(
         LoginFragment.newInstance(),
-        RegisterFragment.newInstance()
+        RegistrationFragment.newInstance()
     )
 
 

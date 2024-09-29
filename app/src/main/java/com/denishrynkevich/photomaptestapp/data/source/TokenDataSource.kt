@@ -5,22 +5,25 @@ import androidx.core.content.edit
 import javax.inject.Inject
 
 class TokenDataSource @Inject constructor(
-    private val preferences: SharedPreferences
-){
-    fun setAccessToken(token: String) = preferences.edit{
+    private val prefs: SharedPreferences
+) {
+
+    fun getAccessToken(): String = prefs.getString(ACCESS_TOKEN, EMPTY_STRING).orEmpty()
+
+
+    fun setAccessToken(token: String) = prefs.edit {
         putString(ACCESS_TOKEN, token)
     }
 
-    fun getAccessToken(): String = preferences.getString(ACCESS_TOKEN, EMPTY_STRING).orEmpty()
-
     fun deleteToken() {
-        preferences.edit {
+        prefs.edit {
             remove(ACCESS_TOKEN)
         }
     }
+
     companion object {
         private const val EMPTY_STRING = ""
+
         private const val ACCESS_TOKEN = "ACCESS_TOKEN"
     }
 }
-

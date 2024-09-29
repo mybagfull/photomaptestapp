@@ -7,10 +7,11 @@ import androidx.lifecycle.viewModelScope
 import com.denishrynkevich.photomaptestapp.domain.model.AuthData
 import com.denishrynkevich.photomaptestapp.domain.model.UserData
 import com.denishrynkevich.photomaptestapp.domain.repositories.UserRepository
-import com.denishrynkevich.photomaptestapp.util.ApiResponse
-import com.denishrynkevich.photomaptestapp.util.BaseRequest
-import com.denishrynkevich.photomaptestapp.util.CoroutinesErrorHandler
+import com.denishrynkevich.photomaptestapp.utils.BaseRequest
+import com.denishrynkevich.photomaptestapp.utils.ApiResponse
+import com.denishrynkevich.photomaptestapp.utils.CoroutinesErrorHandler
 import javax.inject.Inject
+
 
 class AuthViewModel @Inject constructor(
     private val repository: UserRepository,
@@ -50,10 +51,10 @@ class AuthViewModel @Inject constructor(
     }
 
     private fun validateLoginInput(inputLogin: String): Boolean {
-        return inputLogin.length in 4..32 && inputLogin.matches(Regex("^[a-z0-9_\\-.@]+$"))
+        return inputLogin.length in 4..32 && inputLogin.matches(Regex("^[a-z0-9_.\\-@]+$"))
     }
 
     fun checkingPasswordData(password: String): Boolean {
-        return password.length in 8..500
+        return password.length in 8..32
     }
 }

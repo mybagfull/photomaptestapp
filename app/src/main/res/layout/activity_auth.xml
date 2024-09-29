@@ -7,9 +7,8 @@
     tools:context=".ui.auth.AuthActivity">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appbar"
-        android:layout_height="wrap_content"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:theme="@style/Theme.Photomaptestapp.AppBarOverlay">
 
         <com.google.android.material.tabs.TabLayout
@@ -19,17 +18,17 @@
             android:background="?attr/colorPrimary"
             app:tabTextColor="?attr/colorOnPrimary"
             app:tabIndicatorColor="?attr/colorOnPrimary"
-            android:paddingTop="56dp">
+            android:paddingTop="56dp"
+            >
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/login_auth" />
 
             <com.google.android.material.tabs.TabItem
-                android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:text="Login" />
-
-            <com.google.android.material.tabs.TabItem
                 android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:text="Register" />
+                android:text="@string/register_auth" />
         </com.google.android.material.tabs.TabLayout>
     </com.google.android.material.appbar.AppBarLayout>
 

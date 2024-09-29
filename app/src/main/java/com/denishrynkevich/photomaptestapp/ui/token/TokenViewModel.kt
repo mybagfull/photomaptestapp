@@ -10,23 +10,23 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class TokenViewModel @Inject constructor(
-    private val preferences: TokenDataSource
+    private val prefs: TokenDataSource
 ) : ViewModel() {
     private val _userIsAuthorizedLiveData = MutableLiveData<Boolean>()
     val userIsAuthorizedLiveData: LiveData<Boolean> get() = _userIsAuthorizedLiveData
 
     fun setTokens(accessToken: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            preferences.setAccessToken(accessToken)
+            prefs.setAccessToken(accessToken)
         }
         _userIsAuthorizedLiveData.value = true
     }
 
-    fun isUserAuth() = preferences.getAccessToken().isEmpty()
+    fun isUserAuth() = prefs.getAccessToken().isEmpty()
 
     fun deleteTokens() {
         viewModelScope.launch(Dispatchers.IO) {
-            preferences.deleteToken()
+            prefs.deleteToken()
         }
     }
 }
